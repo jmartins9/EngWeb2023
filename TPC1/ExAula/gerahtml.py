@@ -56,17 +56,41 @@ for c in cities:
     <p><b>População: </b> {c['população']}</p>
     <p><b>Descrição: </b> {c['descrição']}</p>
     <p><b>Distrito: </b> {c['distrito']}</p>
-    <p><b>Ligações: </b>   
+    <p><b>Ligações: </b></br>
+    <table>
+        <tr>
+            <td>
+                <h4>Origens</h4>
+            </td>
+            <td>
+                <h4>Destinos</h4>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <table>
     """
     for l in connections:
-        if c['id'] == l['origem']:
-            pageHtml += f"""
-            <a href=#{l['destino']}> {cts[l['destino']]}</a>- {l['distância']} km,"""
+        if c['id'] == l['destino']:
+            pageHtml += f"""<tr><td>
+            <a href=#{l['origem']}> {cts[l['origem']]}</a>- {l['distância']} km </td><tr>"""
 
-    if pageHtml[-1] == ',':
-        pageHtml = pageHtml[:len(pageHtml)-1] + "."
+    pageHtml += """</table>
+    </td>
+    <td valign="top">
+        <table>
+    """
+
+    for l in connections:
+        if c['id'] == l['origem']:
+            pageHtml += f"""<tr><td>
+            <a href=#{l['destino']}> {cts[l['destino']]}</a>- {l['distância']} km </td><tr>"""
 
     pageHtml += """
+    </table>
+    </td>
+    </tr>
+    </table>
     </p> 
     <address> [<a href=#indice>Voltar ao índice</a>]</address><br>
     <center>
