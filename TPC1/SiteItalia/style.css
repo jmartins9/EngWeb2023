@@ -1,6 +1,6 @@
 .article-img {
-    width: 500px;
-    height: 400px;
+    max-width: 500px;
+    max-height: 400px;
 } 
 
 body {
