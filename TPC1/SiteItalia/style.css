@@ -1,15 +1,11 @@
-
-
-
 .article-img {
     width: 500px;
     height: 400px;
 } 
 
 body {
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-top: 0px;
+    margin-left: 15%;
+    margin-right: 15%;
 }
 
 .centered {
@@ -21,9 +17,11 @@ img {
   border-radius: 5px;
 }
 
-
-
-nav a {
+a {
   color: black;
   padding: 10px;
+}
+
+.references {
+  padding-top: 100px;
 }
