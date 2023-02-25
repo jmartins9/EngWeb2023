@@ -47,7 +47,7 @@ def make_index(cities):
         for city in dict_map[key]:
             page += f"""
                                 <li>
-                                    <a href="localhost:7777/{city['id']}">{city['nome']}</a>
+                                    <a href="{city['id']}">{city['nome']}</a>
                                 </li>         
             
             """
@@ -65,7 +65,7 @@ def make_index(cities):
     """
 
     # write in the file
-    index_file = open("index.html", "w")
+    index_file = open("./Pages/index.html", "w")
     index_file.write(page)
     index_file.close()
 
@@ -92,53 +92,27 @@ def make_cities_pages(cities, connections, names):
                                 <p><b>População: </b> {city['população']}</p>
                                 <p><b>Descrição: </b> {city['descrição']}</p>
                                 <p><b>Distrito: </b> {city['distrito']}</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h3>Ligações</h3>
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <h4>Origens</h4>
-                                        </td>
-                                        <td>
-                                            <h4>Destinos</h4>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <ul>
+                                <p><b>Ligações: </b>
+                                    <ul>
         """
 
         for connection in connections:
             if city['id'] == connection['destino']:
                 page += f"""
-                                                        <li>
-                                                            <a href="localhost:7777/{connection['origem']}"> {names[connection['origem']]}</a>- {connection['distância']} km
-                                                        </li>
+                                        <li>
+                                            <a href="{connection['origem']}"> {names[connection['origem']]}</a>- {connection['distância']} km
+                                        </li>
                 """
-
-        page += """
-                                            </ul>
-                                        </td>
-                                        <td>
-                                             <ul>
-            """
-
-        for connection in connections:
-            if city['id'] == connection['origem']:
+            elif city['id'] == connection['origem']:
                 page += f"""
-                                                <li>
-                                                    <a href="localhost:7777/{connection['destino']}"> {names[connection['destino']]}</a>- {connection['distância']} km
-                                                </li>
+                                        <li>
+                                            <a href="{connection['destino']}"> {names[connection['destino']]}</a>- {connection['distância']} km
+                                        </li>
                 """
 
         page += """
-                                            </ul>   
-                                        </td>
-                                    </tr>
-                                </table>
+                                    </ul>   
+                                </p>
                             </td>
                         </tr>
                     </table>
@@ -146,7 +120,7 @@ def make_cities_pages(cities, connections, names):
             </html>              
         """
 
-        city_file = open(f"{city['id']}.html", "w")
+        city_file = open(f"./Pages/{city['id']}.html", "w")
         city_file.write(page)
         city_file.close()
 
