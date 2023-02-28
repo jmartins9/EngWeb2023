@@ -96,19 +96,22 @@ def make_cities_pages(cities, connections, names):
                                     <ul>
         """
 
+        aux_connections = {}
         for connection in connections:
             if city['id'] == connection['destino']:
-                page += f"""
-                                        <li>
-                                            <a href="{connection['origem']}"> {names[connection['origem']]}</a>- {connection['distância']} km
-                                        </li>
-                """
+                aux_connections[connection['origem']] = connection['distância']
             elif city['id'] == connection['origem']:
-                page += f"""
-                                        <li>
-                                            <a href="{connection['destino']}"> {names[connection['destino']]}</a>- {connection['distância']} km
-                                        </li>
-                """
+                aux_connections[connection['destino']] = connection['distância']
+
+        keys = list(aux_connections.keys())
+        keys.sort(key=lambda x: names[x])
+
+        for key in keys:
+            page += f"""
+                                    <li>
+                                        <a href="{key}"> {names[key]}</a>- {aux_connections[key]} km
+                                    </li>
+            """
 
         page += """
                                     </ul>   
