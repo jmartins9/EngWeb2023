@@ -1,0 +1,30 @@
+{
+    "alunos": [
+        {
+            "id": "A12345",
+            "nome": "Ana Dias"
+        },
+        {
+            "id": "A4238",
+            "nome": "Paulo Domingues"
+        },
+        {
+            "id": "A8899",
+            "nome": "Ezequiel Brito"
+        }
+    ],
+    "docentes": [
+        {
+            "id": "D1",
+            "nome": "jcr"
+        },
+        {
+            "id": "D2",
+            "nome": "jj"
+        },
+        {
+            "id": "D3",
+            "nome": "prh"
+        }
+    ]
+}

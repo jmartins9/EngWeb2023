@@ -1,7 +1,7 @@
 var http = require('http')
 var url = require('url')
 var fs = require('fs')
-const re = new RegExp("\/c[0-9][0-9]?[0-9]?")
+const re = new RegExp("\    ")
 
 
 var server = http.createServer(function(req, res) {
