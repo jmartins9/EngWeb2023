@@ -2,7 +2,7 @@ import json
 
 def main():
     input_file = open("dataset-extra1.json","r", encoding="utf-8")
-    output_file = open("dataset-extra-com-id.json", "w", encoding="utf-8")
+    output_file = open("dataset.json", "w", encoding="utf-8")
     dataset = json.load(input_file)
     
     pessoas = dataset["pessoas"]
