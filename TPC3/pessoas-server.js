@@ -144,10 +144,6 @@ http.createServer(function (req, res) {
         })
 
     }
-    else if(req.url.match(/\/pessoas\/p\d+/)){
-        console.log('Pedindo ' + req.url.substring(9))
-        
-    }
     else if(req.url.match(/w3\.css$/)){
         fs.readFile("w3.css", function(erro, dados){
             if(erro){
