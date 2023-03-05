@@ -73,7 +73,7 @@ exports.genPersonPage = function(p, d){
                         <tr>
                             <th>Idade</th>
                             <th>Sexo</th>
-                            <th>Idade</th>
+                            <th>Cidade</th>
                         </tr>
                         <tr>
                             <td>${p.idade}</td>
