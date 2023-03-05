@@ -30,6 +30,20 @@ function distDesporto(pessoas) {
     return dist
 }
 
+function distTop10Profissoes(pessoas) {
+    var dist = {}
+    for(let i = 0; i < pessoas.length; i++) {
+        if (!dist.hasOwnProperty(pessoas[i].profissao)) {
+            dist[pessoas[i].profissao] = 0
+        }
+        dist[pessoas[i].profissao] += 1
+    }
+    let top10 = Object.entries(dist)
+                .sort((a, b) => b[1] - a[1])
+                .reduce((acc, [chave, valor]) => ({ ...acc, [chave]: valor }), {});
+    return top10
+}
+
 
 http.createServer(function (req, res) {
     var d = new Date().toISOString().substring(0, 16)
@@ -135,14 +149,26 @@ http.createServer(function (req, res) {
         .then(response => {
             var pessoas = response.data
             res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
-            res.end()
+            res.end(mypages.genDistPage(distTop10Profissoes(pessoas), 'Profissão', d, '/pessoas?profissao='))
         })
         .catch(error => {
             console.log("Erro: " + error)
             res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
             res.end('<p>Erro na obtrenção de dados: ' + error + '</p>')
         })
-
+    }
+    else if(req.url.match(/\/pessoas\?profissao=.*/)){
+        axios.get('http://localhost:3000/pessoas?profissao=' + req.url.substring(19) + '&_sort=nome&_order')
+        .then(response => {
+            var pessoas = response.data
+            res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
+            res.end(mypages.genMainPage(pessoas, d))
+        })
+        .catch(error => {
+            console.log("Erro: " + error)
+            res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
+            res.end('<p>Erro na obtrenção de dados: ' + error + '</p>')
+        })
     }
     else if(req.url.match(/w3\.css$/)){
         fs.readFile("w3.css", function(erro, dados){
