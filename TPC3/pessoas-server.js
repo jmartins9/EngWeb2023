@@ -38,9 +38,12 @@ function distTop10Profissoes(pessoas) {
         }
         dist[pessoas[i].profissao] += 1
     }
-    let top10 = Object.entries(dist)
-                .sort((a, b) => b[1] - a[1])
-                .reduce((acc, [chave, valor]) => ({ ...acc, [chave]: valor }), {});
+    let distSorted = Object.entries(dist)
+                    .sort((a, b) => b[1] - a[1])
+                    .reduce((acc, [chave, valor]) => ({ ...acc, [chave]: valor }), {})
+            
+    let top10 = Object.fromEntries(Object.entries(distSorted).slice(0,10))
+    
     return top10
 }
 
