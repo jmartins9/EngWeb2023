@@ -92,34 +92,34 @@ exports.genPersonPage = function(p, d){
     return pagHTML
 }
 
-exports.genDistPage = function(dist, date) {
+exports.genDistPage = function(dist, distName, date, refPath) {
     var pagHTML = `
     <!DOCTYPE html>
     <html>
         <head>
             <meta charset="UTF-8"/>
-            <title>Distribuição por sexo</title>
+            <title>Distribuição por ${distName}</title>
             <link rel="stylesheet" type="text/css" href="w3.css"/>
         </head>
         <body>
             <div class="w3-card-4">
                 <header class="w3-container w3-purple">
-                    <h1>Distribuição por sexo</h1>
+                    <h1>Distribuição por ${distName}</h1>
                 </header>
         
                 <div class="w3-container">
                     <table class="w3-table-all">
                     <tr>
-                        <th>Sexo</th>
+                        <th>${distName}</th>
                         <th>Frequência</th>
                     </tr>
                 `
-    for(let sexo in dist){
+    for(let key in dist){
         pagHTML += `
         <tr>
-            <td>${sexo}</td>
+            <td>${key}</td>
             <td>
-                <a href="/pessoas?sexo=${sexo}">${dist[sexo]}</a>
+                <a href="${refPath}${key}">${dist[key]}</a>
             </td>
         </tr>
         `
