@@ -69,7 +69,17 @@ exports.genPersonPage = function(p, d){
                 </header>
 
                 <div class="container">
-                    <p>Preencher com os outros campos...</p>
+                    <table class="w3-table-all">
+                        <tr>
+                            <th>Idade</th>
+                            <th>Sexo</th>
+                            <th>Idade</th>
+                        </tr>
+                        <tr>
+                            <td>${p.idade}</td>
+                            <td>${p.sexo}</td>
+                            <td>${p.morada.cidade}</td>
+                    </table>
                 </div>
                 
                 <footer class="w3-container w3-purple">
@@ -79,6 +89,52 @@ exports.genPersonPage = function(p, d){
         </body>
     </html>
                 `
+    return pagHTML
+}
+
+exports.genDistPage = function(dist, date) {
+    var pagHTML = `
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="UTF-8"/>
+            <title>Distribuição por sexo</title>
+            <link rel="stylesheet" type="text/css" href="w3.css"/>
+        </head>
+        <body>
+            <div class="w3-card-4">
+                <header class="w3-container w3-purple">
+                    <h1>Distribuição por sexo</h1>
+                </header>
+        
+                <div class="w3-container">
+                    <table class="w3-table-all">
+                    <tr>
+                        <th>Sexo</th>
+                        <th>Frequência</th>
+                    </tr>
+                `
+    for(let sexo in dist){
+        pagHTML += `
+        <tr>
+            <td>${sexo}</td>
+            <td>
+                <a href="/pessoas?sexo=${sexo}">${dist[sexo]}</a>
+            </td>
+        </tr>
+        `
+    }
+
+    pagHTML += `
+                    </table>
+                </div>
+                <footer class="w3-container w3-purple">
+                    <h5>Generated in EngWeb2023 ${date}</h5>
+                </footer>
+            </div>
+        </body>
+    </html>
+    `
     return pagHTML
 }
 
