@@ -80,7 +80,7 @@ var alunosServer = http.createServer(function (req, res) {
                             axios.get('http://localhost:3000/tasks')
                                 .then(function(rp) {
                                     var tasks = rp.data
-                                    res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'})
+                                    res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8', 'Location' : '/'})
                                     res.end(templates.tasksPage(tasks,null, d))
                                 })
                                 .catch(er => {
