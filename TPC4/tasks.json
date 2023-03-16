@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": "u1",
+      "name": "João"
+    },
+    {
+      "id": "u2",
+      "name": "José"
+    },
+    {
+      "id": "u1",
+      "name": "Jaqueline"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "t1",
+      "who": "u1",
+      "due_date": "2023-03-31",
+      "description": "Passar a EW"
+    },
+    {
+      "id": "t2",
+      "who": "u1",
+      "description": "Passar a CP",
+      "done": "1"
+    },
+    {
+      "id": "t3",
+      "who": "u2",
+      "description": "Passar a PL",
+      "done": "0"
+    }
+  ]
+}
