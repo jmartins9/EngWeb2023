@@ -61,7 +61,7 @@ var alunosServer = http.createServer(function (req, res) {
                                     res.end(templates.tasksPage(tasks,task, d))
                                 })
                                 .catch(er => {
-                                    console.log("Erro: " + erro)
+                                    console.log("Erro: " + er)
                                     res.writeHead(404, {'Content-Type': 'text/html;charset=utf-8'})
                                     res.end(templates.errorPage("Unable to collect record: " + tasks, d))
                                 })
@@ -84,7 +84,7 @@ var alunosServer = http.createServer(function (req, res) {
                                     res.end(templates.tasksPage(tasks,null, d))
                                 })
                                 .catch(er => {
-                                    console.log("Erro: " + erro)
+                                    console.log("Erro: " + er)
                                     res.writeHead(404, {'Content-Type': 'text/html;charset=utf-8'})
                                     res.end(templates.errorPage("Unable to collect record: " + tasks, d))
                                 })
@@ -92,6 +92,41 @@ var alunosServer = http.createServer(function (req, res) {
                             console.log('Erro: ' + error);
                             res.writeHead(404, {'Content-Type': 'text/html;charset=utf-8'})
                             res.end(templates.errorPage("Unable to delete record: " + idTask, d))
+                        })
+                }
+                // Get /tasks/done/:id ------------------------------------------------------------------------
+                else if(/\/tasks\/done\/t[0-9]+$/i.test(req.url)){
+                    var idTask = req.url.split("/")[3]
+                    // Get task record
+                    axios.get('http://localhost:3000/tasks/' + idTask)
+                        .then(function(resp){
+                            var task = resp.data
+                            task["done"] = "1"
+
+                            axios.put('http://localhost:3000/tasks/' + task.id, task) 
+                                .then(function(rp) {
+                                    axios.get('http://localhost:3000/tasks')
+                                        .then(function(r) { 
+                                            var tasks = r.data
+                                            res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'})
+                                            res.end(templates.tasksPage(tasks,null, d))
+                                        })
+                                        .catch(e => {
+                                            console.log("Erro: " + e)
+                                            res.writeHead(404, {'Content-Type': 'text/html;charset=utf-8'})
+                                            res.end(templates.errorPage("Unable to collect records", d))        
+                                        }) 
+                                })
+                                .catch(er => {
+                                    console.log("Erro: " + er)
+                                    res.writeHead(404, {'Content-Type': 'text/html;charset=utf-8'})
+                                    res.end(templates.errorPage("Unable to insert record: " + task, d))
+                                })
+                        })
+                        .catch(erro => {
+                            console.log("Erro: " + erro)
+                            res.writeHead(404, {'Content-Type': 'text/html;charset=utf-8'})
+                            res.end(templates.errorPage("Unable to collect record: " + task, d))
                         })
                 }
                 else{
@@ -115,7 +150,7 @@ var alunosServer = http.createServer(function (req, res) {
                                             res.end(templates.tasksPage(tasks,null, d))
                                         })
                                         .catch(er => {
-                                            console.log("Erro: " + erro)
+                                            console.log("Erro: " + er)
                                             res.writeHead(404, {'Content-Type': 'text/html;charset=utf-8'})
                                             res.end(templates.errorPage("Unable to collect record: " + tasks, d))
                                         })
@@ -150,7 +185,7 @@ var alunosServer = http.createServer(function (req, res) {
                                             res.end(templates.tasksPage(tasks,null, d))
                                         })
                                         .catch(er => {
-                                            console.log("Erro: " + erro)
+                                            console.log("Erro: " + er)
                                             res.writeHead(404, {'Content-Type': 'text/html;charset=utf-8'})
                                             res.end(templates.errorPage("Unable to collect record: " + tasks, d))
                                         })
