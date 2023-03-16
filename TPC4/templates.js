@@ -103,7 +103,7 @@ exports.tasksPage = function(tlist, editTask,d){
 
     for(let i=0; i<notDones.length; i++) {
         pagHTML += `
-                            <li>${notDones[i].description} <a class="w3-btn w3-black w3-round-large w3-tiny" href="/tasks/done/${tlist[i].id}">Done</a>  <a class="w3-btn w3-black w3-round-large w3-tiny" href="/tasks/edit/${tlist[i].id}">Edit</a> <a class="w3-btn w3-black w3-round-large w3-tiny" href="/tasks/delete/${tlist[i].id}">Delete</a></li>
+                            <li>${notDones[i].description} <a href="/tasks/done/${notDones[i].id}">Done</a>  <a href="/tasks/edit/${notDones[i].id}">Edit</a> <a href="/tasks/delete/${notDones[i].id}">Delete</a></li>
         `
     }
 
@@ -118,7 +118,7 @@ exports.tasksPage = function(tlist, editTask,d){
 
     for(let i=0; i<dones.length; i++) {
         pagHTML += `
-                            <li>${dones[i].description} <a class="w3-btn w3-black w3-round-large w3-tiny" href="/tasks/edit/${tlist[i].id}">Edit</a> <a class="w3-btn w3-black w3-round-large w3-tiny" href="/tasks/delete/${tlist[i].id}">Delete</a></li>
+                            <li>${dones[i].description} <a href="/tasks/edit/${dones[i].id}">Edit</a> <a href="/tasks/delete/${dones[i].id}">Delete</a></li>
         `
     }
 

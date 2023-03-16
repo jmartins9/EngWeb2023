@@ -18,8 +18,7 @@
       "id": "t1",
       "who": "u1",
       "due_date": "2023-03-31",
-      "description": "Passar a EW",
-      "done": "1"
+      "description": "Passar a EW"
     },
     {
       "id": "t2",
@@ -30,6 +29,7 @@
     {
       "id": "t3",
       "who": "u2",
+      "due_date": "",
       "description": "Passar a PL"
     },
     {
@@ -37,6 +37,12 @@
       "who": "u2",
       "due_date": "2023-03-25",
       "description": "Comprar Carro"
+    },
+    {
+      "id": "t20",
+      "who": "u1",
+      "due_date": "2023-05-31",
+      "description": "Benfica campeão europeu"
     }
   ]
 }

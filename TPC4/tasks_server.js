@@ -108,7 +108,7 @@ var alunosServer = http.createServer(function (req, res) {
                                     axios.get('http://localhost:3000/tasks')
                                         .then(function(r) { 
                                             var tasks = r.data
-                                            res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'})
+                                            res.writeHead(302, {'Content-Type': 'text/html;charset=utf-8', 'Location' : '/'})
                                             res.end(templates.tasksPage(tasks,null, d))
                                         })
                                         .catch(e => {
@@ -181,13 +181,13 @@ var alunosServer = http.createServer(function (req, res) {
                                     axios.get('http://localhost:3000/tasks')
                                         .then(function(rp) {
                                             var tasks = rp.data
-                                            res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'})
+                                            res.writeHead(302, {'Content-Type': 'text/html;charset=utf-8', 'Location' : '/'})
                                             res.end(templates.tasksPage(tasks,null, d))
                                         })
                                         .catch(er => {
                                             console.log("Erro: " + er)
                                             res.writeHead(404, {'Content-Type': 'text/html;charset=utf-8'})
-                                            res.end(templates.errorPage("Unable to collect record: " + tasks, d))
+                                            res.end(templates.errorPage("Unable to collect records", d))
                                         })
                                 })
                                 .catch(error => {
