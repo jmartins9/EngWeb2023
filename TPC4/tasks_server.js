@@ -21,7 +21,7 @@ function collectRequestBodyData(request, callback) {
 }
 
 // Server creation
-var alunosServer = http.createServer(function (req, res) {
+var tasksServer = http.createServer(function (req, res) {
     // Logger: what was requested and when it was requested
     var d = new Date().toISOString().substring(0, 16)
     console.log(req.method + " " + req.url + " " + d)
@@ -80,7 +80,7 @@ var alunosServer = http.createServer(function (req, res) {
                             axios.get('http://localhost:3000/tasks')
                                 .then(function(rp) {
                                     var tasks = rp.data
-                                    res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8', 'Location' : '/'})
+                                    res.writeHead(302, {'Content-Type': 'text/html;charset=utf-8', 'Location' : '/'})
                                     res.end(templates.tasksPage(tasks,null, d))
                                 })
                                 .catch(er => {
@@ -218,7 +218,7 @@ var alunosServer = http.createServer(function (req, res) {
     
 })
 
-alunosServer.listen(7777, ()=>{
+tasksServer.listen(7777, ()=>{
     console.log("Servidor à escuta na porta 7777...")
 })
 
