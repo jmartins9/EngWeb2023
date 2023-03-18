@@ -1,5 +1,57 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  header.w3-container.w3-center
+    h1
+      b Submit Task
+  div(style="display: flex; align-items: center;")          
+    form.w3-container.w3-card-4.w3-half.w3-round-large(style="display: inline-block; margin: auto;" method="POST")
+      p
+      label.w3-text-black.w3-center
+        b Id
+      input.w3-input.w3-border.w3-light-grey.w3-round-large.w3-center(type="text" name="id")
+      p
+      label.w3-text-black.w3-center
+        b Who
+      input.w3-input.w3-border.w3-light-grey.w3-round-large.w3-center(type="text" name="who")
+      p
+      label.w3-text-black.w3-center
+        b Due date
+      input.w3-input.w3-border.w3-light-grey.w3-round-large.w3-center(type="date" name="due_date")
+      p
+      label.w3-text-black.w3-center
+        b Description
+      input.w3-input.w3-border.w3-light-grey.w3-round-large.w3-center(type="text" name="description")
+      p
+      button.w3-btn.w3-black.w3-round-large(type="submit") Add
+      p 
+    
+  - var dones = []
+  - var notDones = []
+  each task in taskList 
+    if "done" in task
+      - dones.push(task)
+    else 
+      - notDones.push(task)
+
+  header.w3-container.w3-center
+    h1
+      b Tasks
+  table(style="width: 100%;")
+    tr
+      th(style="width: 50%;") To Do
+      th(style="width: 50%;") Concluded
+    tr
+      td
+        ul.w3-ul.w3-hoverable.w3-center
+          each task in notDones
+            li= task.description
+              a(href="/tasks/done/" + task.id) Done 
+              a(href="/tasks/edit/" + task.id) Edit
+              a(href="/tasks/delete/" + task.id) Delete
+      td
+        ul.w3-ul.w3-hoverable.w3-center
+          each task in dones
+            li= task.description
+              a(href="/tasks/done/" + task.id) Undo 
+              a(href="/tasks/delete/" + task.id) Delete
