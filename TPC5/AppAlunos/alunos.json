@@ -94,13 +94,6 @@
       "gitlink": "https://github.com/RicAlvesO/EngWeb2023"
     },
     {
-      "id": "A97540",
-      "name": "Ana Rita Moreira Vaz",
-      "gitlink": "https://github.com/ritavaz02/EngWeb2023",
-      "tpc1": "1",
-      "tpc2": "1"
-    },
-    {
       "id": "A97257",
       "nome": "João Miguel Ferreira Loureiro",
       "gitlink": "https://github.com/jmfl27/EngWeb2023"
@@ -269,22 +262,15 @@
       "gitlink": "https://github.com/eivarin/EngWeb2023"
     },
     {
-      "id": "A96326",
-      "nome": "Bernard Ambrosio Georges",
-      "gitlink": "https://github.com/BernardGeorges/EngWeb2023.gi"
-    },
-    {
       "id": "A95323",
       "nome": "Henrique Ribeiro Fernandes",
       "gitlink": "https://github.com/0HenriqueFernandes0/EngWeb2023.git"
     },
     {
-      "id": "A4140",
-      "nome": "Jose Carlos Ramalho",
-      "gitlink": "qq coisa",
-      "tpc1": "1",
-      "tpc2": "1",
-      "tpc3": "1"
+      "id": "A1",
+      "nome": "Verdadeiro",
+      "gitlink": "verdadeiro.git",
+      "tpc4": "1"
     }
   ]
 }
