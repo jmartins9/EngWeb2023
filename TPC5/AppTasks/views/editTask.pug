@@ -5,7 +5,7 @@ block content
     h1
       b Submit Task
   div(style="display: flex; align-items: center;")          
-    form.w3-container.w3-card-4.w3-half.w3-round-large(style="display: inline-block; margin: auto;" method="POST")
+    form.w3-container.w3-card-4.w3-half.w3-round-large(style="display: inline-block; margin: auto;" method="POST" action="/")
       p
       label.w3-text-black.w3-center
         b Id
@@ -24,7 +24,40 @@ block content
       input.w3-input.w3-border.w3-light-grey.w3-round-large.w3-center(type="text" name="description")
       p
       button.w3-btn.w3-black.w3-round-large(type="submit") Add
-      p 
+      p
+  header.w3-container.w3-center
+    h1
+      b Edit Task
+  div(style="display: flex; align-items: center;")          
+    form.w3-container.w3-card-4.w3-half.w3-round-large(style="display: inline-block; margin: auto;" method="POST" action="/edit")
+      p
+      label.w3-text-black.w3-center
+        b Id
+      input.w3-input.w3-border.w3-light-grey.w3-round-large.w3-center(type="text" name="id" value=editTask.id readonly)
+      p
+      label.w3-text-black.w3-center
+        b Who
+      input.w3-input.w3-border.w3-light-grey.w3-round-large.w3-center(type="text" name="who" value=editTask.who)
+      p
+      label.w3-text-black.w3-center
+        b Due date
+      input.w3-input.w3-border.w3-light-grey.w3-round-large.w3-center(type="date" name="dueDate" value=editTask.dueDate)
+      p
+      label.w3-text-black.w3-center
+        b Description
+      input.w3-input.w3-border.w3-light-grey.w3-round-large.w3-center(type="text" name="description" value=editTask.description)
+      p
+      if editTask["done"]
+        label.w3-text-black.w3-center
+            b Done
+        input.w3-check(type="checkbox" name="done" value="1" checked)
+      else 
+        label.w3-text-black.w3-center
+            b Done
+        input.w3-check(type="checkbox" name="done" value="1")
+      p
+      button.w3-btn.w3-black.w3-round-large(type="submit") Save
+      p   
     
   - var dones = []
   - var notDones = []

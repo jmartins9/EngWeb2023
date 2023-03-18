@@ -1,38 +1,38 @@
 {
-    "users" : [
-        {
-            "id" : "u1",
-            "name" : "John"
-        },
-        {
-            "id" : "u2",
-            "name" : "Ramos"
-        }
-    ],
-    "tasks" : [
-        {
-            "id" : "t1",
-            "who" : "u1",
-            "dueDate" : "",
-            "description" : "Passar a EW"
-        },
-        {
-            "id" : "t2",
-            "who" : "u1",
-            "dueDate" : "",
-            "description" : "Passar a PL"
-        },
-        {
-            "id" : "t3",
-            "who" : "u2",
-            "dueDate" : "",
-            "description" : "Benfica Campeão Europeu"
-        },
-        {
-            "id" : "t4",
-            "who" : "u2",
-            "dueDate" : "",
-            "description" : "Benfica Campeão"
-        }
-    ]
+  "users": [
+    {
+      "id": "u1",
+      "name": "John"
+    },
+    {
+      "id": "u2",
+      "name": "Ramos"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "t1",
+      "who": "u1",
+      "dueDate": "",
+      "description": "Passar a EW"
+    },
+    {
+      "id": "t2",
+      "who": "u1",
+      "dueDate": "",
+      "description": "Passar a PL"
+    },
+    {
+      "id": "t3",
+      "who": "u2",
+      "dueDate": "",
+      "description": "Benfica Campeão Europeu"
+    },
+    {
+      "id": "t4",
+      "who": "u2",
+      "dueDate": "",
+      "description": "Benfica Campeão"
+    }
+  ]
 }
