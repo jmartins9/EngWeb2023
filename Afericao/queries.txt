@@ -1,0 +1,31 @@
+1. db.exames.count() -> 300
+
+2. db.exames.find({resultado: true}).count() -> 138
+
+3. db.exames.aggregate([{$group : {_id: "$género", count: {$sum:1}} }]) -> 
+   142 F
+   158 M
+
+4. db.exames.aggregate([{$group : {_id: "$modalidade", count: {$sum:1}} }]) ->
+  { _id: 'Esgrima', count: 20 },
+  { _id: 'Andebol', count: 18 },
+  { _id: 'Ténis', count: 10 },
+  { _id: 'Dança', count: 17 },
+  { _id: 'BTT', count: 18 },
+  { _id: 'Basquetebol', count: 13 },
+  { _id: 'Orientação', count: 19 },
+  { _id: 'Futebol', count: 24 },
+  { _id: 'Parapente', count: 19 },
+  { _id: 'Karaté', count: 15 },
+  { _id: 'Patinagem', count: 18 },
+  { _id: 'Equitação', count: 13 },
+  { _id: 'Triatlo', count: 23 },
+  { _id: 'Atletismo', count: 18 },
+  { _id: 'Ciclismo', count: 18 },
+  { _id: 'SUP', count: 16 },
+  { _id: 'Badminton', count: 21 }
+
+5. db.exames.find({ "clube" : "GDGoma", "federado" : True }).count() -> 12
+
+6. db.exames.find({ "género": "F", "modalidade": "Triatlo" }).count() -> 9
+
