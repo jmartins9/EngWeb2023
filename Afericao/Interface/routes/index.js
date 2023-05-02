@@ -6,8 +6,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   axios.get('http://localhost:7007/api/emdlist')
     .then(resposta => {
-      console.log(resposta)
-      res.render('index', { list : resposta} )
+      res.render('index', { list : resposta.data} )
     })
     .catch(erro => {
       res.render('error', { error: erro });
